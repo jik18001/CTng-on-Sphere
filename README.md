@@ -17,30 +17,34 @@ Every entity (including a control node) is connected to the backbone router via 
 
    ```bash
    cd <PATH_TO_CTNGEXP>
-   sudo su          # become root
+   ```
+   ```bash
+   sudo su          
    ```
 2. Generate the Ansible inventory file:
 
    ```bash
-   python3 genini.py    # creates inv.ini
+   python3 genini.py   
    ```
 3. Switch back to your non-root user:
 
    ```bash
-   exit               # leave root shell
-   su <USERNAME>      # replace with your username
+   exit              
+   ```
+   ```bash
+   su <USERNAME>     
    ```
 
 ## 2. Distribute Playbooks
 Distribute the CTngexp folder:
 ```bash
-ansible-playbook -i inv.ini distribute.yml   # copy files from <SOURCE_HOST> to control node
+ansible-playbook -i inv.ini distribute.yml  
 ```
 From the CTngexp directory, run:
 
 ```bash
 
-ansible-playbook -i inv.ini ssh.yml          # configure SSH keys/config
+ansible-playbook -i inv.ini ssh.yml         
 ```
 # Operations from the control Node
 
@@ -73,15 +77,19 @@ sudo apt install ansible
 Run these playbooks to install prerequisites and Go on every host:
 
 ```bash
-ansible-playbook -i inv.ini gpp.yml      # install general prerequisites
-ansible-playbook -i inv.ini newgo.yml    # install Go runtime
+ansible-playbook -i inv.ini gpp.yml      
+ansible-playbook -i inv.ini newgo.yml    
 ```
 
 Verify on any host:
 
 ```bash
 ssh <HOSTNAME>
+```
+```bash
 g++ --version
+```
+```bash
 go version
 ```
 
@@ -113,7 +121,11 @@ ansible-playbook -i inv.ini ctngv3.yml
 
    ```bash
    ansible-playbook -i inv.ini redis.yml
+   ```
+   ```bash
    go test ./CTngV3/deter
+   ```
+   ```bash
    ansible-playbook -i inv.ini ctngv3.yml
    ```
 
@@ -125,7 +137,7 @@ ansible-playbook -i inv.ini collect.yml
 
 ## 10. Retrieve Results & Cleanup
 
-1. **Copy back to local machine:**
+1. **Copy back to XDC:**
 
    ```bash
    ansible-playbook -i inv.ini copy.yml
@@ -134,4 +146,11 @@ ansible-playbook -i inv.ini collect.yml
 
    ```bash
    rm -rv output output.tar.gz monitor_files
+   ```
+### 11. Copy to local machine 
+   ```bash
+   mrg xdc scp download -r <path_to_folder_on_XDC> <path_local_destination_folder>
+   ```
+   ```bash
+   mrg xdc scp download  <path_to_file_on_XDC> <path_local_destination_folder>
    ```
