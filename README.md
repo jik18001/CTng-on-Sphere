@@ -8,7 +8,11 @@ Every entity (including a control node) is connected to the backbone router via 
 # Results
 Results were obtained using CTngV3 repository with Commit ID:
 ```
-fe0941cc115a9085c43b0c48cf64c95086f338dd
+fe0941c
+```
+Link:
+```
+https://github.com/jik18001/CTngV3/commit/fe0941cc115a9085c43b0c48cf64c95086f338dd
 ```
 
 ![image](https://github.com/user-attachments/assets/79f05636-7404-4c56-97e3-672516a68a67)
