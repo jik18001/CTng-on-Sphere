@@ -5,6 +5,8 @@ The model file creates a star topology as shown in the figure below:
 
 Every entity (including a control node) is connected to the backbone router via a 100Mbps access link. 
 
+# Results
+![image](https://github.com/user-attachments/assets/79f05636-7404-4c56-97e3-672516a68a67)
 
 # Operations from the XDC
 ## 1. Generate Inventory
@@ -116,26 +118,29 @@ ansible-playbook -i inv.ini ctngv3.yml
 
 ## 8. Iterating on Experiments
 
-1. Edit your test code (e.g., CTngV3/deter/gen\_test.go).
-2. Redistribute and rerun:
+#### 1. Edit your test code (e.g., CTngV3/deter/gen\_test.go).
+#### 2. Redistribute
 
    ```bash
    ansible-playbook -i inv.ini redis.yml
    ```
+#### 3. rerun and collect result
    ```bash
    go test ./CTngV3/deter
    ```
    ```bash
    ansible-playbook -i inv.ini ctngv3.yml
    ```
+   ```bash
+   ansible-playbook -i inv.ini collect.yml
+   ```
+   or Run experiment for 30 iterations and automatically collect results for every run :
+   ```bash
+   sh run.sh
+   ```
 
-## 9. Collect Results
 
-```bash
-ansible-playbook -i inv.ini collect.yml
-```
-
-## 10. Retrieve Results & Cleanup
+## 9. Retrieve Results & Cleanup
 
 1. **Copy back to XDC:**
 
@@ -147,7 +152,7 @@ ansible-playbook -i inv.ini collect.yml
    ```bash
    rm -rv output output.tar.gz monitor_files
    ```
-### 11. Copy to local machine 
+## 10. Copy to local machine 
    ```bash
    mrg xdc scp download -r <path_to_folder_on_XDC> <path_local_destination_folder>
    ```
