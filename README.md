@@ -1,3 +1,11 @@
+# Model 
+The model file creates a star topology as shown in the figure below: 
+
+![image](https://github.com/user-attachments/assets/ebc51907-91f9-44cf-89da-249f72210f03)
+
+Every entity (including a control node) is connected to the backbone router via a 100Mbps access link. 
+
+
 # Operations from the XDC
 ## 1. Generate Inventory
 
