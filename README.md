@@ -6,6 +6,11 @@ The model file creates a star topology as shown in the figure below:
 Every entity (including a control node) is connected to the backbone router via a 100Mbps access link. 
 
 # Results
+Results were obtained using CTngV3 repository with Commit ID:
+```
+fe0941cc115a9085c43b0c48cf64c95086f338dd
+```
+
 ![image](https://github.com/user-attachments/assets/79f05636-7404-4c56-97e3-672516a68a67)
 
 # Operations from the XDC
